@@ -10,13 +10,26 @@ rightNow.append(current);
 const planner = $('#planner'); 
 planner.addClass('container')
 
-const boxTime = $('<span>');
-boxTime.attr('class', 'time-block');
+
+
+let plannerArray = new Array(5);
 
 let currentHour = moment().hours();
 console.log(currentHour);
 
 for(let hour = 5; hour <= 20; hour++) {
+
+    let index = hour - 5;
+
+    let rowTime = $('div');
+    rowTime.addClass('time-block');
+    rowTime.attr('hour-index', hour);
+
+    let timeDiv = $('<div>');
+    timeDiv.addClass('col-md-2');
+
+    const boxTime = $('<span>');
+    boxTime.attr('class', 'row');
 
     let displayTime = 0;
     let meridian = "";
@@ -27,6 +40,19 @@ for(let hour = 5; hour <= 20; hour++) {
         displayTime = hour;
         meridian = "am";
     }
+
+    boxTime.text(`${displayTime} ${meridian}`);
+
+    rowTime.append(timeDiv);
+    timeDiv.append(boxTime);
+    let hourlySlot = $('<input>');
+
+    hourlySlot.attr('id', `input-${index}`);
+    hourlySlot.attr('hour-index', index);
+    hourlySlot.attr('type', 'text');
+
+    hourlySlot.val(plannerArray[index]);
+    console.log(hourlySlot);
 
 console.log(displayTime, meridian);
 }
