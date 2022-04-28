@@ -1,58 +1,94 @@
+const hour = {
+    hourTime: Number,
+    note: "",
+    saveNote: function() {
+        if(this.note !== this.note){
+            return this.note;
+        }
+    }
+}
+
+
+for(let i = 7; i < 20; i++){
+    console.log(hour)
+    hour.hourTime = i;
+}
+
+
 // formats current date and time
 const current = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-
+console.log(current);
 // displays current date and time 
 const rightNow = $('#rightNow');
 rightNow.addClass("d-flex row-md-8 justify-content-center mb-2");
 rightNow.append(current);
-
+console.log(rightNow)
 // render time blocks
 const planner = $('#planner'); 
-planner.addClass('container')
-
-
+planner.addClass('column');
 
 let plannerArray = new Array(5);
 
-let currentHour = moment().hours();
+let currentHour = moment().hours()
 console.log(currentHour);
 
-for(let hour = 5; hour <= 20; hour++) {
+/* iterate a grid layout to display the times from 7am to 6pm
+    needs to include hourly time, textarea for input and button to save. */
 
-    let index = hour - 5;
-
-    let rowTime = $('div');
-    rowTime.addClass('time-block');
-    rowTime.attr('hour-index', hour);
-
-    let timeDiv = $('<div>');
-    timeDiv.addClass('col-md-2');
-
-    const boxTime = $('<span>');
-    boxTime.attr('class', 'row');
-
-    let displayTime = 0;
-    let meridian = "";
-    if (hour > 12){
-        displayTime = hour - 12;
-        meridian = "pm";
-    }else{
-        displayTime = hour;
-        meridian = "am";
-    }
-
-    boxTime.text(`${displayTime} ${meridian}`);
-
-    rowTime.append(timeDiv);
-    timeDiv.append(boxTime);
-    let hourlySlot = $('<input>');
-
-    hourlySlot.attr('id', `input-${index}`);
-    hourlySlot.attr('hour-index', index);
-    hourlySlot.attr('type', 'text');
-
-    hourlySlot.val(plannerArray[index]);
-    console.log(hourlySlot);
-
-console.log(displayTime, meridian);
+function getHourlySlot(){
+    // check to see if prev. saved data for time slot.
 }
+
+
+
+
+
+
+
+// for(let hour = 7; hour <= 20; hour++) {
+
+
+//     let rowTime = $('div');
+//     rowTime.addClass('time-block');
+//     rowTime.attr('hour-index', hour);
+
+//     let timeDiv = $('<div>');
+//     timeDiv.addClass('col-md-2');
+
+//     const boxTime = $('<span>');
+//     boxTime.attr('class', 'time-block');
+
+//     let displayTime = 0;
+//     let meridian = "";
+//     if (hour > 12){
+//         displayTime = hour - 12;
+//         meridian = "pm";
+//     }else{
+//         displayTime = hour;
+//         meridian = "am";
+//     }
+
+//     boxTime.text(`${displayTime} ${meridian}`);
+
+//     rowTime.append(timeDiv);
+//     timeDiv.append(boxTime);
+
+
+//     let hourlySlot = $('<input>');
+
+//     hourlySlot.attr('id', `input-${index}`);
+//     hourlySlot.attr('hour-index', index);
+//     hourlySlot.attr('type', 'text');
+
+//     hourlySlot.val(plannerArray[index]);
+//     // console.log(hourlySlot);
+
+//     let boxWidth = $('<div>');
+//     boxWidth.addClass('col-md-9');
+
+//     rowTime.append(boxTime);
+
+//     let saveBtn = $('<button>');
+
+// // console.log(displayTime, meridian);
+// }
