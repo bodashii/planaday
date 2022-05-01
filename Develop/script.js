@@ -1,19 +1,42 @@
-const hour = {
-    hourTime: Number,
-    note: "",
-    saveNote: function() {
-        if(this.note !== this.note){
-            return this.note;
-        }
+
+
+// Hour constructor
+class Hour  {
+    constructor(hourTime, note) {
+        this.hourTime = hourTime,
+        this.note = note
     }
 }
 
-
-for(let i = 7; i < 20; i++){
-    console.log(hour)
-    hour.hourTime = i;
+function todayHours() {
+    let hours = [];
+    for(let i = 7; i < 20; i++){
+        Hour.hourTime = i;
+        hours.push(Hour.hourTime = new Hour ({
+            hourTime: i,
+            note: '', 
+            saveNote: function() {
+                if(this.note !== this.note){
+                    return this.note;
+                }
+            }
+        }));
+    }
+    return hours
 }
+console.log(todayHours());
 
+// display today hours on page
+
+// check if theres saved data in local storage and load that, in none make a new blank schedule
+
+// use function to append multiple objects from hours array to html
+const dailySchedule = todayHours();
+console.log(dailySchedule);
+
+function displaySchedule(){
+
+}
 
 // formats current date and time
 const current = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
