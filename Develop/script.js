@@ -2,7 +2,15 @@ const schedule = $("#schedule");
 const rightNow = $("#rightNow");
 const current = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
-let hours = [];
+function hours() {
+  let hour = 0;
+  let result = [];
+  for (let i = 7; i < 20; i++) {
+    hour = i;
+    moment().set;
+  }
+  console.log(result);
+}
 
 function displayCurrent() {
   let result = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -13,69 +21,83 @@ function displayCurrent() {
 }
 displayCurrent();
 
+// get hour object array
+function getHourArray() {
+  let result = [];
+  for (let i = 7; i < 20; i++) {
+      let hour = new Hour();
+      let number = moment().hour(i);
+    hour.id = i - 7;
+    hour.time = i;
+    hour.note = "";
+    if (i <= 13) {
+      hour.meridiem = "am";
+    } else {
+      hour.meridiem = "pm";
+    }
+    result.push(hour);
+  }
+  return result;
+}
 // Hour constructor
 class Hour {
-  constructor(hour, note) {
-    (this.hour = hour), (this.note = note);
+  constructor() {
+    this.id = null;
+    this.time = "";
+    this.meridiem = "";
+    this.note = "";
   }
 }
 
-function todayHours() {
-  for (let i = 7; i < 20; i++) {
-    hour = i;
-    œ;
-    note = "tasks go here";
-    hours.push(new Hour({ hour, note }));
-  }
-  return hours;
-}
-todayHours();
+const hourArray = getHourArray();
+
+console.log(hourArray);
 
 // check if theres saved data in local storage and load that, in none make a new blank schedule
 
 // use function to append multiple objects from hours array to html
-function displaySchedule(time) {
-  time = hours;
+// function displaySchedule(time) {
+//   time = hours;
 
-  console.log(time[0].hour.hour);
+//   console.log(time[0].hour.hour);
 
-  let rowSlot, slotHour, slotNote, slotSave;
-  for (let i = 0; i < time.length; i++) {
-    rowSlot = $("div");
+//   let rowSlot, slotHour, slotNote, slotSave;
+//   for (let i = 0; i < time.length; i++) {
+//     rowSlot = $("div");
 
-    slotHour = $("<p></p>").text(time[i].hour.hour);
-    slotNote = $("<textarea></textarea>").text(time[i].hour.note);
-    slotSave = $("<button></button>").text("save");
+//     slotHour = $("<p></p>").text(time[i].hour.hour);
+//     slotNote = $("<textarea></textarea>").text(time[i].hour.note);
+//     slotSave = $("<button></button>").text("save");
 
-    rowSlot.addClass("row");
-    slotHour.addClass("col-3");
-    slotNote.addClass("col-6");
-    slotSave.addClass("btn btn-primary");
+//     rowSlot.addClass("row");
+//     slotHour.addClass("col-3");
+//     slotNote.addClass("col-6");
+//     slotSave.addClass("btn btn-primary");
 
-    schedule.append(slotHour, slotNote, slotSave);
-  }
-}
+//     schedule.append(slotHour, slotNote, slotSave);
+//   }
+// }
 
-displaySchedule(hours);
+// displaySchedule(hours);
 // formats current date and time
 
-console.log(current);
+// console.log(current);
 // displays current date and time
 
-console.log(rightNow);
+// console.log(rightNow);
 // render time blocks
 
-let plannerArray = new Array(5);
+// let plannerArray = new Array(5);
 
-let currentHour = moment().hours();
-console.log(currentHour);
+// let currentHour = moment().hours();
+// console.log(currentHour);
 
 /* iterate a grid layout to display the times from 7am to 6pm
     needs to include hourly time, textarea for input and button to save. */
 
-function getHourlySlot() {
-  // check to see if prev. saved data for time slot.
-}
+// function getHourlySlot() {
+// check to see if prev. saved data for time slot.
+// }
 
 // function appendText() {
 //     let txt1 = "<p>Text.</p>";
