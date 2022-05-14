@@ -12,27 +12,17 @@ class Hour  {
 
 function todayHours() {
     for(let i = 7; i < 20; i++){
-        hour = i;
+        hour = i;œ
         note = 'tasks go here';
         hours.push(new Hour ({ hour, note }));
     }
     return hours
 }
-
 todayHours();
-// display today hours on page
-// function timeSlot() {
-//     if(dailySchedule.Hour.hourTime.hourTime <= currentHour) {
-
-//     }
-// }
 
 // check if theres saved data in local storage and load that, in none make a new blank schedule
 
 // use function to append multiple objects from hours array to html
-
-
-
 function displaySchedule(time){
     time = hours;
 
@@ -48,7 +38,7 @@ function displaySchedule(time){
         slotSave = $("<button></button>").text("save");
 
         rowSlot.addClass('row');
-        slotHour.addClass('col-3 text-center');
+        slotHour.addClass('col-3');
         slotNote.addClass('col-6');
         slotSave.addClass('btn btn-primary');
 
