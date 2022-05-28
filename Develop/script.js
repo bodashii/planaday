@@ -1,57 +1,61 @@
+// declare html linked variables
 const schedule = $("#schedule");
 const rightNow = $("#rightNow");
 const current = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+const hourArray = getHourArray();
 
-function hours() {
-  let hour = 0;
-  let result = [];
-  for (let i = 7; i < 20; i++) {
-    hour = i;
-    moment().set;
-  }
-  console.log(result);
-}
+// saves hour to local storage
+const saveHour = function () {
+  localStorage.setItem("hours", JSON.stringify(hours));
+};
 
-function displayCurrent() {
-  let result = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-  if (result === current) {
-    rightNow.addClass("d-flex row-md-8 justify-content-center mb-2");
-    rightNow.append(current);
-  }
-}
-displayCurrent();
-
+$("#hourlySlot".saveBtn).click(console.log("saved"));
 // get hour object array
 function getHourArray() {
   let result = [];
+
   for (let i = 7; i < 20; i++) {
-      let hour = new Hour();
-      let number = moment().hour(i);
-    hour.id = i - 7;
-    hour.time = i;
-    hour.note = "";
-    if (i <= 13) {
-      hour.meridiem = "am";
-    } else {
-      hour.meridiem = "pm";
+    class Hour {
+      constructor() {
+        this.id = i - 7;
+        this.time = i;
+        this.note = "";
+      }
     }
+
+    let hour = new Hour();
+    this.id = i - 7;
+    this.time = i;
+    this.note = "";
+
     result.push(hour);
   }
   return result;
 }
-// Hour constructor
-class Hour {
-  constructor() {
-    this.id = null;
-    this.time = "";
-    this.meridiem = "";
-    this.note = "";
-  }
-}
 
-const hourArray = getHourArray();
+// map hourArray to hour with meridien and hourTime
+const getMeridien = () => {
+  let hours = [];
+  let meridien = "";
+  
+
+  for (let i = 0; i < hourArray.length; i++) {
+    if (this.time < 13) {
+      this.push(meridien) = "am";
+    } else {
+      this.push(meridien) = "pm";
+    }
+   
+    hourArray[i].push(hours);
+  }
+  return hours
+};
 
 console.log(hourArray);
+
+// Hour constructor
+
+// initialize planner
 
 // check if theres saved data in local storage and load that, in none make a new blank schedule
 
